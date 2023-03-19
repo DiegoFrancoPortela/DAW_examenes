@@ -3,31 +3,34 @@
 // Y podrías añadir diferentes armas (y formas de atacar) sin modificar (mucho) la estructura principal
 
 // Personajes del Juego
-const personajes = {
-    personaje1: {
-        nombre: "Personaje1",
-        ataque: arma => console.log("Personaje1 usa "+arma.tipo)
-    },
-
-    personaje2: {
-        nombre: "Personaje2",
-        ataque: arma => console.log("Personaje2 usa "+arma.tipo)
-    }
-}
+const personajes = [
+    {nombre: "Personaje1"},
+    {nombre: "Personaje2"},
+    {nombre: "Personaje3"}
+];
 
 // Armas del Juego
-const armas = {
-    lanza: {
-        tipo: "Lanza",
-    },
-
-    katana: {
-        tipo: "Katana",
-    }
-}
+const armas = [
+    {tipo: "Lanza"},
+    {tipo: "Katana"}
+];
 
 // Función para atacar
-const ataque = (personaje, arma) => personaje.ataque(arma);
+const atacar = (personajeAtacante, personajeAtacado, seleccionArma) => {
+    const atacante = personajes[personajeAtacante];
+    const atacado = personajes[personajeAtacado];
+    const arma = armas[seleccionArma];
+    console.log(atacado.nombre + " ha sido atacado por "+ atacante.nombre + " usando " + arma.tipo);
+};
 
-// Generar ataque
-ataque(personajes.personaje1, armas.lanza);
+// Función para añadir armas
+const agregarArma = (tipo) => {
+    armas.push({tipo: tipo});
+};
+
+// Añadimos un arma
+agregarArma("Espada");
+
+// Generamos un ataque con la nueva arma
+atacar(0, 1, 2);
+
