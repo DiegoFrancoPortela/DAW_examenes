@@ -1,0 +1,14 @@
+{
+    "usuarios": [
+        {
+            "dni": "00000000A",
+            "nombre": "Usuario1",
+            "email": "usuario1@gmail.com"
+        },
+        {
+            "dni": "00000000B",
+            "nombre": "Usuario2",
+            "email": "usuario2@gmail.com"
+        }
+    ]
+}
