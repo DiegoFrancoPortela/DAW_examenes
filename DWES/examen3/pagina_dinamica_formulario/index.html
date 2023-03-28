@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script async data-id="five-server" src="http://localhost:8080/fiveserver.js"></script>
+    <title>Formulario CV</title>
+</head>
+<body>
+    <h1>Rellena tu CV</h1>
+    <h2>Datos Personales</h2>
+    <form action="form.php" method="POST" enctype="multipart/form-data">
+        <label for="provincia">Provincia:</label>
+        <select id="provincia" name="provincia">
+            <option value="Coruña">Coruña</option>
+            <option value="Lugo">Lugo</option>
+            <option value="Ourense">Ourense</option>
+            <option value="Pontevedra">Pontevedra</option>
+        </select>
+        <br><br>
+        
+        <label for="dia">Fecha de Nacimiento:</label>
+        <input type="number" id="dia" name="dia" placeholder="Día" min="1" max="31" step="1" pattern="\d{2}">
+        <select id="mes" name="mes">
+            <option value="1">Enero</option>
+            <option value="2">Febrero</option>
+            <option value="3">Marzo</option>
+            <option value="4">Abril</option>
+            <option value="5">Mayo</option>
+            <option value="6">Junio</option>
+            <option value="7">Julio</option>
+            <option value="8">Agosto</option>
+            <option value="9">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+        </select>
+        <input type="number" id="año" name="año" placeholder="Año" min="1900" max="2099" step="1" pattern="\d{4}">
+        <br><br>
+        
+        <label for="texto">Información adicional:</label>
+        <br>
+        <textarea id="texto" name="texto" rows="4" cols="50"></textarea>
+        <br><br>
+
+        <!-- 2º Apartado del Ejercicio -->
+        <input type="file" id="archivo" name="archivo">
+        <br><br>
+
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
+
