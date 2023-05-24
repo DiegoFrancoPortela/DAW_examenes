@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Información del usuario</title>
+    <script>
+      window.onload = function() {
+        // ¿Cual es la UAS (agente de usuario)?
+        document.getElementById("user-agent").innerHTML = navigator.userAgent;
+        
+        // ¿Cual es el sistema operativo del usuario?
+        document.getElementById("os").innerHTML = navigator.platform;
+        
+        // ¿Qué versión de navegador está utilizando (o renderizado HTML)?
+        document.getElementById("browser-version").innerHTML = navigator.appVersion;
+        
+        // ¿Qué tamaño de memoria tiene el equipo?
+        document.getElementById("memory").innerHTML = navigator.deviceMemory + " GB";
+        
+        // ¿Qué lenguaje es el predeterminado del usuario?
+        document.getElementById("language").innerHTML = navigator.language;
+        
+        // ¿Estás cargando la página online o local (sin conexión)?
+        if (navigator.onLine) {
+          document.getElementById("connection-type").innerHTML = "Online";
+        } else {
+          document.getElementById("connection-type").innerHTML = "Sin conexión";
+        }
+        
+        // ¿Se pueden mostrar documentos PDF?
+        if (navigator.mimeTypes['application/pdf']) {
+          document.getElementById("pdf-support").innerHTML = "Sí";
+        } else {
+          document.getElementById("pdf-support").innerHTML = "No";
+        }
+        
+        // Obtener el nivel de batería del sistema
+        navigator.getBattery().then(function(battery) {
+        document.getElementById("battery-level").innerHTML = Math.floor(battery.level * 100) + "%";
+        document.getElementById("battery-status").innerHTML = battery.charging ? "cargando" : "no cargando";
+          
+        // No cargar la página si el nivel de batería es menor del 25%
+        if (battery.level < 0.25) {
+            document.body.innerHTML = "";
+        }
+        }).catch(function(err) {
+          // Mostrar mensaje si no se detecta la batería
+          document.getElementById("battery-level").innerHTML = "desconocido";
+          document.getElementById("battery-status").innerHTML = "desconocido";
+          document.getElementById("battery-info").innerHTML = "El dispositivo no tiene batería o no se puede detectar.";
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Información del usuario</h1>
+    <p>UAS (Agente de Usuario): <span id="user-agent"></span></p>
+    <p>Sistema operativo: <span id="os"></span></p>
+    <p>Versión del navegador: <span id="browser-version"></span></p>
+    <p>Tamaño de memoria: <span id="memory"></span></p>
+    <p>Lenguaje predeterminado: <span id="language"></span></p>
+    <p>Online o Local: <span id="connection-type"></span></p>
+    <p>Soporte de PDF: <span id="pdf-support"></span></p>
+    <p>Nivel de batería: <span id="battery-level"></span></p>
+    <p>Estado de la batería: <span id="battery-status"></span></p>
+  </body>
+</html>

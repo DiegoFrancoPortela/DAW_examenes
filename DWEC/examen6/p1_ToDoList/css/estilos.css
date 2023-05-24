@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.div_Menu {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #3D72FE;
+}
+
+.div_Menu a {
+    font-size: large;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.div_contenidoWeb {
+    border-color: #1c58ff;
+    border-style: solid;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.ul_Menu-Secundario {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #3D72FE;
+}
+
+.li_Menu-Secundario {
+    float: left;
+}
+
+.li_Menu-Secundario a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.li_a_MenuSecundario a:hover {
+    background-color: #2E5AD4;
+}
+
+.active {
+    background-color: #6E94FF;
+}
+
+.todo-list {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.barraTodo {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+form {
+    display: flex;
+}
+
+input {
+    padding: 15px 10px;
+    outline: none;
+    width: 400px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.li-contenedor {
+    background-color: white;
+    width: 100%;
+    color: black;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ul-tareas {
+    padding: 0;
+}
+
+.btn-add {
+    padding: 15px 20px;
+    border: none;
+    color: white;
+    background-color: #3D72FE;
+    font-size: 1.4rem;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-add:hover, .btn-borrar:hover {
+    background-color: #2E5AD4;
+}
+
+/* Estilo del botón de eliminar */
+.btn-borrar {
+    border: none;
+    background-color: #e31746;
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    outline: none;
+    border-radius: 50%;
+    font-size: 1.2em;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    cursor: pointer;
+}
+
+/* Ajuste del ancho y altura del li */
+.li-todo {
+    list-style: none;
+    background-color: lightgray;
+    border-radius: 10px;
+    margin-top: 15px;
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 50px;
+}
+
+/* Ajuste del ancho y altura del p */
+.li-todo p {
+    margin: 0;
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* Ajuste del ancho y altura del botón de eliminar */
+.btn-borrar {
+    width: 30px;
+    height: 30px;
+    line-height: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .todo-list {
+      width: 80%;
+    }
+  
+    .li-todo {
+      height: auto;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px;
+    }
+  
+    .li-todo p {
+      margin: 10px 0;
+    }
+  
+    .btn-borrar {
+      top: 5px;
+      right: 5px;
+    }
+  }
+  

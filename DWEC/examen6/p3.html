@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Estimador de posición</title>
+  <script>
+    function estimarPosicion() {
+
+        if (navigator.geolocation) {
+
+            navigator.geolocation.getCurrentPosition(function(position) {
+                
+                // Variables de la localización
+                var latitud = position.coords.latitude;
+                var longitud = position.coords.longitude;
+                var altitud = position.coords.altitude;
+                var precision = position.coords.accuracy;
+                var linkMapa = "https://www.google.com/maps?q=" + latitud + "," + longitud;
+
+                var mensaje = "Tus coordenadas son: " + latitud + ", " + longitud + "<br>";
+                mensaje += "Altitud es: " + altitud + "<br>";
+                mensaje += "Estimación es de precisión: " + precision + " metros" + "<br>";
+
+                mensaje += "<a href='" + linkMapa + "' target='_blank'>Ver en Google Maps</a>";
+
+                document.getElementById("resultado").innerHTML = mensaje;
+            });
+        } else {
+            alert("La geolocalización no está disponible en tu navegador.");
+        }
+    }
+    </script>
+</head>
+<body>
+    <h1>Apartado 1</h1>
+    <button onclick="estimarPosicion()">Estimar mi posición</button>
+    <br>
+    <div id="resultado"></div>
+</body>
+</html>
