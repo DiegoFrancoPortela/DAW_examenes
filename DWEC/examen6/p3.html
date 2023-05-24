@@ -1,39 +1,96 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Estimador de posición</title>
+  <title>Estimador y Sígueme</title>
   <script>
     function estimarPosicion() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var latitud = position.coords.latitude;
+          var longitud = position.coords.longitude;
+          var altitud = position.coords.altitude;
+          var precision = position.coords.accuracy;
 
-        if (navigator.geolocation) {
+          var linkMapa = "https://www.google.com/maps?q=" + latitud + "," + longitud;
 
-            navigator.geolocation.getCurrentPosition(function(position) {
-                
-                // Variables de la localización
-                var latitud = position.coords.latitude;
-                var longitud = position.coords.longitude;
-                var altitud = position.coords.altitude;
-                var precision = position.coords.accuracy;
-                var linkMapa = "https://www.google.com/maps?q=" + latitud + "," + longitud;
+          var mensaje = "Tus coordenadas son: " + latitud + ", " + longitud + "<br>";
 
-                var mensaje = "Tus coordenadas son: " + latitud + ", " + longitud + "<br>";
-                mensaje += "Altitud es: " + altitud + "<br>";
-                mensaje += "Estimación es de precisión: " + precision + " metros" + "<br>";
+          mensaje += "Tu altitud es: " + altitud + "<br>";
+          mensaje += "La precisión de la estimación es de: " + precision + " metros" + "<br>";
+          mensaje += "<a href='" + linkMapa + "' target='_blank'>Ver en Google Maps</a>";
 
-                mensaje += "<a href='" + linkMapa + "' target='_blank'>Ver en Google Maps</a>";
-
-                document.getElementById("resultado").innerHTML = mensaje;
-            });
-        } else {
-            alert("La geolocalización no está disponible en tu navegador.");
-        }
+          document.getElementById("resultado").innerHTML = mensaje;
+        });
+      } else {
+        alert("La geolocalización no está disponible en tu navegador.");
+      }
     }
-    </script>
+
+    var historial = [];
+    var intervalo;
+
+    function seguirPosicion() {
+      if (navigator.geolocation) {
+        intervalo = setInterval(function() {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var latitud = position.coords.latitude;
+            var longitud = position.coords.longitude;
+            var altitud = position.coords.altitude;
+            var precision = position.coords.accuracy;
+            var fechaHora = new Date().toLocaleString();
+
+            // URL con el Mapa en Google MAps
+            var linkMapa = "https://www.google.com/maps?q=" + latitud + "," + longitud;
+
+            var mensaje = "Coordenadas: " + latitud + ", " + longitud + "<br>";
+            mensaje += "Altitud: " + altitud + "<br>";
+            mensaje += "Precisión: " + precision + " metros" + "<br>";
+            mensaje += "Fecha y hora: " + fechaHora + "<br>";
+            mensaje += "<a href='" + linkMapa + "' target='_blank'>Ver en Google Maps</a>";
+
+            historial.push(mensaje);
+            actualizarhistorial();
+
+          });
+        }, 10000);
+      } else {
+        alert("La geolocalización no está disponible en tu navegador.");
+      }
+    }
+
+    function detenerSeguimiento() {
+      clearInterval(intervalo);
+    }
+
+    function actualizarhistorial() {
+      var lista = document.getElementById("historial");
+      lista.innerHTML = "";
+
+      for (var i = 0; i < historial.length; i++) {
+        var item = document.createElement("li");
+        item.innerHTML = historial[i];
+        lista.appendChild(item);
+      }
+    }
+
+  </script>
 </head>
 <body>
-    <h1>Apartado 1</h1>
-    <button onclick="estimarPosicion()">Estimar mi posición</button>
-    <br>
-    <div id="resultado"></div>
+  <h1>Estimador de Posición</h1>
+  <button onclick="estimarPosicion()">Estimar mi posición</button>
+  <h2>Posición actual:</h2>
+  <div id="resultado"></div>
+
+  <br>
+  <hr>
+
+  <h1>Sígueme</h1>
+  <button onclick="seguirPosicion()">Sígueme</button>
+  <button onclick="detenerSeguimiento()">Detener</button>
+
+  <br>
+
+  <h2>Historial de Localización</h2>
+  <ol id="historial"></ol>
 </body>
 </html>
