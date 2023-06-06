@@ -1,0 +1,24 @@
+1.- ¿Cuánto dura?
+
+	ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 sample4.mp3
+
+2.- ¿Qué codificación utiliza?
+
+	ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 sample4.mp3
+
+3.- ¿Cual es su bitrate?
+
+	ffprobe -v error -select_streams a:0 -show_entries stream=bit_rate -of default=noprint_wrappers=1:nokey=1 sample4.mp3
+
+4.- Guárdalo en formato opus
+
+	ffmpeg -i sample4.mp3 -c:a libopus sample4_Opus.opus
+
+5.- Recorta su duración a la mitad
+
+	ffmpeg -i sample4.mp3 -ss 0 -t 122 -c copy sample4_cut.mp3
+
+6.- Dividelo en 4 partes iguales.
+
+	ffmpeg -i sample4.mp3 -c copy -segment_time 61 -f segment -reset_timestamps 1 sample4%03d.mp3
+

@@ -1,0 +1,14 @@
+Licencia CC BY NC
+
+Con esta licencia eres libre de compartir, copiar y redistribuir el material en cualquier formato.
+Puedes remezclar, transformar y crear en base al material que posea esta licencia.
+Sin embargo, debes reconocer la autoría y no usarlo para fines comerciales.
+
+
+Licencia CC SA NC
+
+Con esta licencia eres libre de compartir, copiar y redistribuir el material en cualquier formato.
+Puedes remezclar, transformar y crear en base al material que posea esta licencia.
+Sin embargo, debes reconocer la autoría y no usarlo para fines comerciales además de ello,
+obliga a que cualquier modificación que se haga en base al elemento deba ser compartido bajo la misma
+licencia.

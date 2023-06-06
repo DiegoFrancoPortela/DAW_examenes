@@ -1,0 +1,20 @@
+1.- ¿Cuánto dura el video y cuántos flujos de audio y video tiene?
+
+	ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 -select_streams v -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 sample_640x360.avi
+
+2.- Codifícalo en webm
+
+	ffmpeg -i sample_640x360.avi -c:v libvpx-vp9 -c:a libvorbis sample_640x360_WEBM.webm
+
+3.- Extrae sólo el audio del video
+
+	ffmpeg -i sample_640x360.avi -vn -acodec copy sample_640x360_MP3.mp3
+
+4.- Recorta la duración del video a la mitad
+
+	ffmpeg -i sample_640x360.avi -c copy -t 7 sample_640x360_CUT.avi
+
+5.- Cambia la resolución de imagen del video
+
+	ffmpeg -i sample_640x360.avi -vf "scale=1280x720" -c:a copy sample_640x360_Resolution.avi
+

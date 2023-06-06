@@ -1,0 +1,26 @@
+Para el examen voy a usar la siguiente imagen debido a que la de Wikipedia no me carga.
+https://es.wikipedia.org/wiki/Archivo:Cat03.jpg
+
+1.- Guárdala en formato webp.
+
+	convert Cat03.jpg Cat03.webp
+
+2.- Guárdala en jpeg pero al 25% de calidad.
+
+	convert Cat03.jpg -quality 25 Cat03_25Quality.jpg
+
+3.- Recorta la imagen, 500 px por arriba y 500 px por la derecha.
+
+	convert Cat03.jpg -crop +500+500 Cat03_Cut.jpg
+
+4.- Rota la imagen 45% a la derecha.
+
+	convert Cat03.jpg -rotate 45 Cat03_Rotate.jpg
+
+5.- Añade una marca de agua (arriba a la izquierda) que diga "Foto Examen".
+
+	convert Cat03.jpg -pointsize 100 -draw "gravity northwest fill black text 10,10 'Foto Examen'" Cat03_WaterMark.jpg
+
+6.- Transforma la imagen con el filtro "implode".
+
+	convert Cat03.jpg -implode 1 Cat03_implode.jpg
